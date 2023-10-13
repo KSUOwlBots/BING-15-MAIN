@@ -47,7 +47,7 @@ void Catapult_Down(void *) {
         catapult.tare_position();
         firing = false;
       } else {
-        catapult.move_velocity((-0.0135135135*cata1.get_position() + 60));
+        catapult.move_velocity((-0.0135135135*cata1.get_position() + 70));
         if (cataLimitSwitch.get_value() == 1) {
           catapult.move_velocity(0);
         }    
