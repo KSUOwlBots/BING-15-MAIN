@@ -136,17 +136,23 @@ void Default()
   Actuate_Auto("out");
   int x = 0;
 
-  while (x < 19) {
-    chassis.set_drive_pid(-7, 65);
+  while (x < 18) {
+    chassis.set_drive_pid(-9, 65);
     chassis.wait_drive();
 
     Intake_Auto(600);
 
-    pros::delay(200);
-    Catapult_Fire();
-    pros::delay(625);
+    chassis.set_turn_pid(25, 50);
+    chassis.wait_drive();
 
-    chassis.set_drive_pid(8, 50);
+    pros::delay(20);
+    Catapult_Fire();
+    pros::delay(150);
+
+    chassis.set_turn_pid(0, 50);
+    chassis.wait_drive();
+
+    chassis.set_drive_pid(10, 50);
     chassis.wait_drive();
     x++;
   }
@@ -162,7 +168,7 @@ void Default()
 
   //Turn to goals for wing movement
 
-  chassis.set_turn_pid(60, 75);
+  chassis.set_turn_pid(65, 75);
   chassis.wait_drive();
 
   chassis.set_drive_pid(-28, 75);
@@ -189,13 +195,7 @@ void Default()
   chassis.set_turn_pid(-45, 75);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(-10, 100);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(5, 50);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-10, 100);
+  chassis.set_drive_pid(-11, 100);
   chassis.wait_drive();
 
   //Go to wing deploy location
