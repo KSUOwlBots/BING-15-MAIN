@@ -133,7 +133,6 @@ void Frenzy_Rush_Mid()
 void Default()
 {
   //Bring intakes out
-  Actuate_Auto("out");
   int x = 0;
 
   while (x < 18) {
@@ -147,7 +146,7 @@ void Default()
 
     pros::delay(20);
     Catapult_Fire();
-    pros::delay(150);
+    pros::delay(200);
 
     chassis.set_turn_pid(0, 50);
     chassis.wait_drive();
@@ -182,7 +181,6 @@ void Default()
   chassis.set_drive_pid(-60, 90, true);
   chassis.wait_drive();
 
-  Actuate_Auto("in");
   Intake_Auto(0);
   pros::delay(150);
 

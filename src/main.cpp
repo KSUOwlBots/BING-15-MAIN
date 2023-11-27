@@ -11,16 +11,16 @@
 Drive chassis(
     // Left Chassis Ports (negative port will reverse it!)
     //   the first port is the sensored port (when trackers are not used!)
-    {-8, -9, -10}
+    {-17, -18, -19, -20}
 
     // Right Chassis Ports (negative port will reverse it!)
     //   the first port is the sensored port (when trackers are not used!)
     ,
-    {1, 2, 3}
+    {7, 8, 9, 10}
 
     // IMU Port
     ,
-    5
+    6
 
     // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
     //    (or tracking wheel diameter)
@@ -38,7 +38,7 @@ Drive chassis(
     // be 2.333. eg. if your drive is 36:60 where the 60t is powered, your RATIO
     // would be 0.6.
     ,
-    1.15
+    .75
 
     // Uncomment if using tracking wheels
     /*
@@ -79,7 +79,6 @@ void initialize()
   chassis.set_curve_default(5, 5);
   default_constants();
   exit_condition_defaults();
-  IntakeActuator.tare_position();
 
 
   ez::as::auton_selector.add_autons({
@@ -138,10 +137,17 @@ Default();
 
 void opcontrol()
 {
+//   chassis.reset_pid_targets();               // Resets PID targets to 0
+//   chassis.reset_gyro();                      // Reset gyro position to 0
+//   chassis.reset_drive_sensor();              // Reset drive sensors to 0
+//   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps
+//                                              // autonomous consistency.
+// //ez::as::auton_selector.call_selected_auton();
+// Default();
+
 
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
   pros::Task IntakeControlTask(Intake_Control);
-  pros::Task IntakeActuation(Intake_Actuate);
   pros::Task wingActuation(wingsActuate);
 
   while (true)

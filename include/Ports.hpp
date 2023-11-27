@@ -3,10 +3,10 @@
 
 //Extra Motor Ports
 
-extern pros::Motor IntakeActuate1;
-extern pros::Motor IntakeActuate2;
-extern pros::Motor_Group IntakeActuator;
-extern pros::Motor intake;
+
+extern pros::Motor intake1;
+extern pros::Motor intake2;
+extern pros::Motor_Group intake;
 extern pros::Motor cata1;
 extern pros::Motor cata2;
 extern pros::Motor_Group catapult;
